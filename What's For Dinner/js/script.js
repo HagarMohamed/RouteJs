@@ -566,14 +566,34 @@ const recipes = [
 ]
 
 
+getRandomRecipe();
+
+
+
+
+function refresh(){
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    // window.location.reload();
+
+    getRandomRecipe();
+
+    
+}
+
+
+function getRandomRecipe (){
+
+    
+const random = Math.floor(Math.random() * recipes.length);
 
 
 
 
 
-
-
-let recipe = recipes[0];
+let recipe = recipes[random];
 let title = recipe.title;
 let description = recipe.description;
 let rating = recipe.rating.average_stars;
@@ -607,6 +627,8 @@ document.querySelector(".total-time").textContent = totalTime + " people";
 
 
 
+var ingredientElement = document.querySelector(".ingredients-list")
+ingredientElement.innerHTML = "";
 
 for(let i = 0; i < recipe.ingredients.length; i++){
     
@@ -620,7 +642,7 @@ for(let i = 0; i < recipe.ingredients.length; i++){
    const span = document.createElement("span");
    span.textContent = [i + 1];
 
-    document.querySelector(".ingredients-list").appendChild(li);
+    ingredientElement.appendChild(li);
     li.appendChild(span);
     
 
@@ -628,7 +650,8 @@ for(let i = 0; i < recipe.ingredients.length; i++){
 }
 
 
-
+var instructionElement = document.querySelector(".instructions-list")
+instructionElement.innerHTML = "";
 
 for(let i = 0; i < recipe.instructions.length; i++){
     
@@ -690,6 +713,8 @@ document.querySelector("#recipe-sodium").innerHTML =
 
 
  let chefTips = recipe.chef_tips;
+ var chefTipsElement = document.querySelector(".chefTips-box");
+ chefTipsElement.innerHTML = "";
 
 for(let i = 0; i < chefTips.length; i++){
     
@@ -706,3 +731,4 @@ for(let i = 0; i < chefTips.length; i++){
     
 }
 
+}
