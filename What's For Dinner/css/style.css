@@ -94,7 +94,7 @@ li.nav-item .nav-link .avatar {
 
 /* ================= IMAGE BOTTOM ================= */
 
-.image-bottom {
+.image-info {
     position: absolute;
 
     bottom: 20px;
@@ -105,7 +105,7 @@ li.nav-item .nav-link .avatar {
 
     border-radius: 20px;
 
-    padding: 20px;
+    padding: 18px 36px;
 
     display: flex;
 
@@ -114,7 +114,7 @@ li.nav-item .nav-link .avatar {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-.image-bottom i {
+.image-info i {
     display: block;
 
     font-size: 25px;
@@ -128,7 +128,7 @@ li.nav-item .nav-link .avatar {
 /* ================= RIGHT CONTENT ================= */
 
 .recipe-content {
-    padding: 40px;
+    /* padding: 40px; */
     position: relative;
 }
 
@@ -159,7 +159,7 @@ li.nav-item .nav-link .avatar {
 /* ================= TITLE ================= */
 
 .recipe-title {
-    font-size: 45px;
+    font-size: 36px;
     font-weight: 700;
 
     color: #111827;
@@ -168,7 +168,7 @@ li.nav-item .nav-link .avatar {
 }
 
 .recipe-description {
-    font-size: 20px;
+    font-size: 18px;
     color: #666;
 }
 
@@ -176,8 +176,8 @@ li.nav-item .nav-link .avatar {
 /* ================= ACTION BUTTONS ================= */
 
 .action-btn {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
 
     border: none;
 
@@ -206,7 +206,7 @@ li.nav-item .nav-link .avatar {
 
     font-size: 18px;
 
-    padding: 20px 25px;
+    padding: 15px;
 }
 
 .recipe-tabs .nav-link i {
@@ -239,7 +239,7 @@ li.nav-item .nav-link .avatar {
 }
 
 .ingredients-box li {
-    font-size: 19px;
+    font-size: 16px;
 
     color: #4b5563;
 
@@ -255,8 +255,8 @@ li.nav-item .nav-link .avatar {
 
     color: white;
 
-    width: 32px;
-    height: 32px;
+    width: 25px;
+    height: 25px;
 
     border-radius: 50%;
 
