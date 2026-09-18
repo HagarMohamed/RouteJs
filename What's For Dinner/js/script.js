@@ -4,7 +4,7 @@ const recipes = [
     "recipe_id": "rec_78945612",
     "title": "Chicken Stir-Fry",
     "description": "Quick and healthy stir-fry with colorful vegetables",
-    "image_url": "img/photo-1603133872878-684f208fb84b.jpg",
+    "image_url": "img/chicken_bowel.jpg",
     "rating": {
       "average_stars": 4.5,
       "total_reviews": 324
@@ -58,7 +58,7 @@ const recipes = [
     "recipe_id": "rec_78945613",
     "title": "Creamy Garlic Pasta",
     "description": "Creamy pasta with garlic, parmesan, and fresh herbs",
-    "image_url": "https://unsplash.com",
+    "image_url": "img/lazania.jpg",
     "rating": {
       "average_stars": 4.7,
       "total_reviews": 512
@@ -109,7 +109,7 @@ const recipes = [
     "recipe_id": "rec_78945614",
     "title": "Grilled Salmon Bowl",
     "description": "Nutritious salmon bowl with rice, avocado, and fresh vegetables",
-    "image_url": "https://unsplash.com",
+    "image_url": "img/shrimp.jpg",
     "rating": {
       "average_stars": 4.8,
       "total_reviews": 287
@@ -160,7 +160,7 @@ const recipes = [
     "recipe_id": "rec_78945615",
     "title": "Beef Tacos",
     "description": "Flavorful beef tacos with fresh salsa and creamy avocado",
-    "image_url": "https://unsplash.com",
+    "image_url": "img/tacos.jpg",
     "rating": {
       "average_stars": 4.6,
       "total_reviews": 438
@@ -212,7 +212,7 @@ const recipes = [
     "recipe_id": "rec_78945616",
     "title": "Vegetable Curry",
     "description": "Comforting vegetable curry cooked in a fragrant coconut sauce",
-    "image_url": "https://unsplash.com",
+    "image_url": "img/salad.jpg",
     "rating": {
       "average_stars": 4.5,
       "total_reviews": 356
@@ -263,7 +263,7 @@ const recipes = [
     "recipe_id": "rec_78945617",
     "title": "Chicken Caesar Salad",
     "description": "Crisp romaine salad topped with grilled chicken and creamy dressing",
-    "image_url": "https://unsplash.com",
+    "image_url": "img/chicken_bowel.jpg",
     "rating": {
       "average_stars": 4.4,
       "total_reviews": 291
@@ -313,7 +313,7 @@ const recipes = [
     "recipe_id": "rec_78945618",
     "title": "Margherita Pizza",
     "description": "Classic Italian pizza with tomato, mozzarella, and fresh basil",
-    "image_url": "https://unsplash.com",
+    "image_url": "img/pizza.jpg",
     "rating": {
       "average_stars": 4.9,
       "total_reviews": 672
@@ -363,7 +363,7 @@ const recipes = [
     "recipe_id": "rec_78945619",
     "title": "Teriyaki Chicken Rice",
     "description": "Tender chicken glazed with homemade teriyaki sauce over steamed rice",
-    "image_url": "https://unsplash.com",
+    "image_url": "img/rice.jpg",
     "rating": {
       "average_stars": 4.6,
       "total_reviews": 401
@@ -414,7 +414,7 @@ const recipes = [
     "recipe_id": "rec_78945620",
     "title": "Mediterranean Chickpea Bowl",
     "description": "Fresh chickpea bowl with vegetables, feta, and lemon dressing",
-    "image_url": "https://unsplash.com",
+    "image_url": "img/stragonof.jpg",
     "rating": {
       "average_stars": 4.7,
       "total_reviews": 245
@@ -465,7 +465,7 @@ const recipes = [
     "recipe_id": "rec_78945621",
     "title": "Beef and Broccoli",
     "description": "Tender beef and crisp broccoli in a savory garlic soy sauce",
-    "image_url": "https://unsplash.com",
+    "image_url": "img/stragonof.jpg",
     "rating": {
       "average_stars": 4.5,
       "total_reviews": 378
@@ -516,7 +516,7 @@ const recipes = [
     "recipe_id": "rec_78945622",
     "title": "Vegetable Fried Rice",
     "description": "Quick fried rice loaded with vegetables and aromatic seasonings",
-    "image_url": "https://unsplash.com",
+    "image_url": "img/rice.jpg",
     "rating": {
       "average_stars": 4.4,
       "total_reviews": 318

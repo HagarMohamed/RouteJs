@@ -424,6 +424,12 @@ li.nav-item .nav-link .avatar {
 
 @media (max-width: 767px) {
 
+    .nav-link{
+        font-size: 16px;
+        padding: 10px 22px;
+       
+    }
+
     .recipe-page {
         padding: 10px;
     }
