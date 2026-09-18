@@ -46,7 +46,8 @@ const recipes = [
       "protein_g": 35,
       "carbs_g": 14,
       "fat_g": 12,
-      "fiber_g": 3
+      "fiber_g": 3,
+      "sodium": 700
     },
     "chef_tips": [
       "Ensure your wok or skillet is very hot before adding ingredients to get that authentic stir-fry texture.",
@@ -96,7 +97,8 @@ const recipes = [
       "protein_g": 18,
       "carbs_g": 62,
       "fat_g": 22,
-      "fiber_g": 3
+      "fiber_g": 3,
+      "sodium": 700
     },
     "chef_tips": [
       "Reserve some pasta water to loosen the sauce if needed.",
@@ -146,7 +148,8 @@ const recipes = [
       "protein_g": 34,
       "carbs_g": 42,
       "fat_g": 20,
-      "fiber_g": 6
+      "fiber_g": 6,
+      "sodium": 220
     },
     "chef_tips": [
       "Do not overcook the salmon.",
@@ -197,7 +200,8 @@ const recipes = [
       "protein_g": 28,
       "carbs_g": 35,
       "fat_g": 21,
-      "fiber_g": 5
+      "fiber_g": 5,
+      "sodium": 400
     },
     "chef_tips": [
       "Toast tortillas briefly for better texture.",
@@ -247,7 +251,8 @@ const recipes = [
       "protein_g": 7,
       "carbs_g": 28,
       "fat_g": 20,
-      "fiber_g": 7
+      "fiber_g": 7,
+      "sodium": 400
     },
     "chef_tips": [
       "Toast curry powder briefly to release its aroma.",
@@ -296,7 +301,8 @@ const recipes = [
       "protein_g": 38,
       "carbs_g": 18,
       "fat_g": 20,
-      "fiber_g": 4
+      "fiber_g": 4,
+      "sodium": 400
     },
     "chef_tips": [
       "Let the chicken rest before slicing.",
@@ -345,7 +351,8 @@ const recipes = [
       "protein_g": 22,
       "carbs_g": 58,
       "fat_g": 21,
-      "fiber_g": 3
+      "fiber_g": 3,
+      "sodium": 400
     },
     "chef_tips": [
       "Use a very hot oven for a crisp crust.",
@@ -395,7 +402,8 @@ const recipes = [
       "protein_g": 32,
       "carbs_g": 55,
       "fat_g": 15,
-      "fiber_g": 2
+      "fiber_g": 2,
+      "sodium": 400
     },
     "chef_tips": [
       "Allow the sauce to reduce until it coats the chicken.",
@@ -445,7 +453,8 @@ const recipes = [
       "protein_g": 15,
       "carbs_g": 38,
       "fat_g": 18,
-      "fiber_g": 9
+      "fiber_g": 9,
+      "sodium": 400
     },
     "chef_tips": [
       "Rinse chickpeas thoroughly before using.",
@@ -495,7 +504,8 @@ const recipes = [
       "protein_g": 36,
       "carbs_g": 20,
       "fat_g": 22,
-      "fiber_g": 4
+      "fiber_g": 4,
+      "sodium": 600
     },
     "chef_tips": [
       "Slice beef thinly against the grain for tenderness.",
@@ -545,7 +555,8 @@ const recipes = [
       "protein_g": 10,
       "carbs_g": 52,
       "fat_g": 10,
-      "fiber_g": 4
+      "fiber_g": 4,
+      "sodium": 600
     },
     "chef_tips": [
       "Use cold, day-old rice for the best texture.",
@@ -582,7 +593,7 @@ console.log(metadatadifficulty);
 document.querySelector(".recipe-title").textContent = title;
 document.querySelector(".recipe-description").textContent = description;
 document.querySelector("#recipe-rating").textContent = rating;
-document.querySelector("#recipe-reviews").textContent = tatalReviews + " reviews";
+document.querySelector("#recipe-reviews").textContent = "(" + tatalReviews + " reviews)";
 document.querySelector(".recipe-image").src = imgCard;
 document.querySelector(".badge-easy").textContent = metadatadifficulty;
 document.querySelector(".badge-asian").textContent = metadatacuisine;
@@ -597,10 +608,19 @@ for(let i = 0; i < recipe.ingredients.length; i++){
 
     console.log(quantity + " " + ingredientName);
 
-    const li = document.querySelectorAll(".ingredients-list li")[i];
+    // const li = document.querySelectorAll(".ingredients-list li")[i];
+   const li = document.createElement("li");
+   const span = document.createElement("span");
+   span.textContent = [i + 1];
+
+    document.querySelector(".ingredients-list").appendChild(li);
+    li.appendChild(span);
+    
 
     li.innerHTML += ` ${quantity} ${ingredientName}`;
 }
+
+
 
 
 for(let i = 0; i < recipe.instructions.length; i++){
@@ -609,8 +629,13 @@ for(let i = 0; i < recipe.instructions.length; i++){
 
     console.log( text);
 
-    const p = document.querySelectorAll(".instructions-list p")[i];
+    // const p = document.querySelectorAll(".instructions-list p")[i];
+    const p = document.createElement("p");
+    const span = document.createElement("span");
+    span.textContent = [i + 1];
 
+    document.querySelector(".instructions-list").appendChild(p);
+    p.appendChild(span);
     p.innerHTML += ` ${text}`;
 }
 
@@ -622,6 +647,7 @@ let protein = nutrition.protein_g;
 let carbs = nutrition.carbs_g;
 let fat = nutrition.fat_g;
 let fiber = nutrition.fiber_g;
+let sodium = nutrition.sodium;
 
 console.log(calories);
 console.log(protein);
@@ -630,11 +656,25 @@ console.log(fat);
 console.log(fiber);
 
 
-document.querySelector(".content-box #recipe-calories span").textContent = calories;
-document.querySelector(".content-box #recipe-protein span").textContent = protein;
-document.querySelector(".content-box #recipe-carbs span").textContent = carbs;
-document.querySelector(".content-box #recipe-fat span").textContent = fat;
-document.querySelector(".content-box #recipe-fiber span").textContent = fiber;
+document.querySelector("#recipe-calories").innerHTML =
+    `<i class="fa-solid fa-fire"></i> Calories: ${calories}`;
+
+document.querySelector("#recipe-carbs").innerHTML =
+    `<i class="fa-solid fa-wheat-awn"></i> Carbohydrates: ${carbs}`;
+
+document.querySelector("#recipe-fiber").innerHTML =
+    `<i class="fa-solid fa-leaf"></i> Fiber: ${fiber}`;
+
+document.querySelector("#recipe-fat").innerHTML =
+    `<i class="fa-solid fa-droplet"></i> Fat: ${fat}`;
+
+document.querySelector("#recipe-protein").innerHTML =
+    `<i class="fa-solid fa-dumbbell"></i> Protein: ${protein}`;
+
+document.querySelector("#recipe-sodium").innerHTML =
+    `<i class="fa-solid fa-bowl-food"></i> Sodium: ${recipe.nutrition.sodium}`;
+document.querySelector("#recipe-sodium").innerHTML =
+    `<i class="fa-solid fa-bowl-food"></i> Sodium: ${sodium}`;
 
 
 
@@ -642,13 +682,22 @@ document.querySelector(".content-box #recipe-fiber span").textContent = fiber;
 
 
 
-let chefTips = recipe.chef_tips;
-let tip1 = chefTips[0];
-let tip2 = chefTips[1];
-
-console.log(tip1);
-console.log(tip2);
 
 
-document.querySelector("#recipe-tips span").textContent = tip1;
-document.querySelector("#recipe-tips2 span").textContent = tip2;
+ let chefTips = recipe.chef_tips;
+
+for(let i = 0; i < chefTips.length; i++){
+    
+    var text = chefTips[i];
+    console.log( text);
+    
+    const li = document.createElement("li");
+    const icon = document.createElement("i");
+    icon.className = "fa-solid fa-check";
+
+    document.querySelector(".chefTips-box").appendChild(li);
+    li.appendChild(icon);
+    li.innerHTML += ` ${text}`;
+    
+}
+

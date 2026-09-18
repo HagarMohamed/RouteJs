@@ -222,8 +222,6 @@ li.nav-item .nav-link .avatar {
 }
 
 
-/* ================= INGREDIENTS ================= */
-
 .ingredients-box {
     background: #fff9ef;
 
@@ -238,7 +236,9 @@ li.nav-item .nav-link .avatar {
     overflow-y: auto;
 }
 
-.ingredients-box li {
+.ingredients-box li,
+.instructions-list p {
+    list-style-type: none;
     font-size: 16px;
 
     color: #4b5563;
@@ -273,6 +273,108 @@ li.nav-item .nav-link .avatar {
     font-weight: bold;
 }
 
+.instructions-list {
+    list-style-type: decimal;
+    margin-left: 20px;
+    font-size: 16px;
+    color: #4b5563;
+}
+
+
+
+.instructions-list p span {
+    background: #ff6500;
+
+    color: white;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 15%;
+
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-right: 15px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+
+.chefTips-box  li {
+    background-color: antiquewhite;
+    padding: 20px;
+    border-left: 5px solid #ff6500;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.chefTips-box li i{
+    background-color: #ff6500;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 14px;
+    font-weight: bold
+}
+
+.nutrition-box p {
+    background-color: #F9FAFB;
+    color: #35416F;ba(128, 128, 128, 0.129);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.nutrition-box p i{
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 15%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    font-size: 16px;
+    font-weight: bold
+}
+
+.fa-fire{
+    background-color: antiquewhite;
+    color: red !important;
+}
+.fa-wheat-awn{
+    background-color: lightyellow;
+    color: brown !important;
+}
+.fa-leaf{
+    background-color: lightgreen;
+    color: green !important;
+}
+.fa-dumbbell{
+    background-color: lightblue;
+    color: #0000FF !important;
+}
+.fa-bowl-food{
+    background-color: lightpink;
+    color: purple !important;
+}
+.fa-droplet{
+    background-color:  rgba(255, 0, 0, 0.208);
+    color: red !important;
+}
+   
 
 /* ================= OTHER CONTENT ================= */
 
