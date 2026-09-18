@@ -581,6 +581,9 @@ let tatalReviews = recipe.rating.total_reviews;
 let imgCard = recipe.image_url;
 let metadatadifficulty = recipe.metadata.difficulty;
 let metadatacuisine = recipe.metadata.cuisine;
+let prepTime = recipe.times.prep_time_min;
+let cookTime = recipe.times.cook_time_min;
+let totalTime = recipe.times.total_time_min;
 
 console.log(title);
 console.log(description);
@@ -597,6 +600,10 @@ document.querySelector("#recipe-reviews").textContent = "(" + tatalReviews + " r
 document.querySelector(".recipe-image").src = imgCard;
 document.querySelector(".badge-easy").textContent = metadatadifficulty;
 document.querySelector(".badge-asian").textContent = metadatacuisine;
+
+document.querySelector(".prep-time").textContent = prepTime + " min";
+document.querySelector(".cook-time").textContent = cookTime + " min";
+document.querySelector(".total-time").textContent = totalTime + " people";
 
 
 
@@ -657,24 +664,22 @@ console.log(fiber);
 
 
 document.querySelector("#recipe-calories").innerHTML =
-    `<i class="fa-solid fa-fire"></i> Calories: ${calories}`;
+    `<i class="fa-solid fa-fire"></i> Calories: <b>${calories}</b>`;
 
 document.querySelector("#recipe-carbs").innerHTML =
-    `<i class="fa-solid fa-wheat-awn"></i> Carbohydrates: ${carbs}`;
+    `<i class="fa-solid fa-wheat-awn"></i> Carbohydrates: <b>${carbs}</b>`;
 
 document.querySelector("#recipe-fiber").innerHTML =
-    `<i class="fa-solid fa-leaf"></i> Fiber: ${fiber}`;
+    `<i class="fa-solid fa-leaf"></i> Fiber: <b>${fiber}</b>`;
 
 document.querySelector("#recipe-fat").innerHTML =
-    `<i class="fa-solid fa-droplet"></i> Fat: ${fat}`;
+    `<i class="fa-solid fa-droplet"></i> Fat: <b>${fat}</b>`;
 
 document.querySelector("#recipe-protein").innerHTML =
-    `<i class="fa-solid fa-dumbbell"></i> Protein: ${protein}`;
+    `<i class="fa-solid fa-dumbbell"></i> Protein: <b>${protein}</b>`;
 
 document.querySelector("#recipe-sodium").innerHTML =
-    `<i class="fa-solid fa-bowl-food"></i> Sodium: ${recipe.nutrition.sodium}`;
-document.querySelector("#recipe-sodium").innerHTML =
-    `<i class="fa-solid fa-bowl-food"></i> Sodium: ${sodium}`;
+    `<i class="fa-solid fa-bowl-food"></i> Sodium: <b>${sodium}</b>`;
 
 
 

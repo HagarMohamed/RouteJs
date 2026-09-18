@@ -19,8 +19,11 @@
 
         <div class="container">
 
+            <div class="me-2">
+                 <i class="fa-solid fa-utensils"></i>
+            </div>
+
             <div class="navbar-brand-wrapper">
-                <img src="./img/logo.png" alt="">
                 <a class="navbar-brand font-weight-bold" href="index.html">
                     What's For Dinner
                 </a>
@@ -31,23 +34,23 @@
             </div>
 
             <div class="collapse navbar-collapse justify-content-end">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav align-items-center">
 
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">
-                            <i class="fa fa-home"></i>
+                            <i class="fa-solid fa-bookmark"></i>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">
-                            <i class="fa fa-info-circle"></i>
+                            <i class="fa-solid fa-clock-rotate-left"></i>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">
-                            <i class="fa fa-envelope"></i>
+                            <i class="fa-solid fa-gear"></i>
                         </a>
                     </li>
 
@@ -73,14 +76,14 @@
 
             <div class="row">
 
-                <div class="col-md-4 position-relative">
+                <div class="col-md-5 position-relative">
 
                     <img src="" class="img-fluid recipe-image" alt="Chicken Stir-Fry">
 
 
                     <div class="rating-badge">
 
-                        <i class="fa fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
 
                         <strong id="recipe-rating"></strong>
 
@@ -92,11 +95,12 @@
 
                         <div class="info-item">
 
-                            <i class="fa fa-clock-o"></i>
+                            <i class="fa-solid fa-clock" style="color: orange;"></i>
 
                             <div>
-                                <small>Prep Time</small>
-                                <strong>15 min</strong>
+                                <small class="text-muted">Prep Time</small>
+                                <br>
+                                <strong class="prep-time"></strong>
                             </div>
 
                         </div>
@@ -104,11 +108,12 @@
 
                         <div class="info-item">
 
-                            <i class="fa fa-fire"></i>
+                            <i class="fa-solid fa-fire-burner" style="color: red;"></i>
 
                             <div>
-                                <small>Cook Time</small>
-                                <strong>20 min</strong>
+                                <small class="text-muted">Cook Time</small>
+                                <br>
+                                <strong class="cook-time"></strong>
                             </div>
 
                         </div>
@@ -116,11 +121,12 @@
 
                         <div class="info-item">
 
-                            <i class="fa fa-users"></i>
+                            <i class="fa-solid fa-users" style="color: blue;"></i>
 
                             <div>
-                                <small>Servings</small>
-                                <strong>4</strong>
+                                <small class="text-muted">Servings</small>
+                                <br>
+                                <strong class=" total-time"></strong>
                             </div>
 
                         </div>
@@ -131,7 +137,7 @@
 
 
 
-                <div class="col-md-8">
+                <div class="col-md-7">
 
                     <div class="card-body recipe-content">
 
@@ -322,11 +328,11 @@
                         </div>
 
                     </div>
-                    <!-- <hr>
+                    <hr>
 
                 <div class="p-3">
-                    <button class="btn btn-primary p-2"><i class="fa fa-refresh"></i> Try Another Recipe</button>
-                </div> -->
+                    <button class="btn-refresh"><i class="fa fa-refresh"></i> Try Another Recipe</button>
+                </div>
 
                 </div>
 
