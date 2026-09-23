@@ -1,0 +1,745 @@
+
+        :root {
+            --primary: #7228f5;
+            --primary-dark: #6520df;
+            --text: #172033;
+            --muted: #778197;
+            --bg: #f7f9fc;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(
+                    circle at 15% 80%,
+                    rgba(112, 55, 255, 0.08),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 55% 85%,
+                    rgba(0, 200, 170, 0.08),
+                    transparent 25%
+                ),
+                #f7f9fc;
+        }
+
+        /* ================= HEADER ================= */
+
+        .navbar {
+            height: 98px;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #edf0f5;
+        }
+
+        .brand-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #7128f5, #5421e8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            box-shadow: 0 8px 20px rgba(114, 40, 245, 0.25);
+        }
+
+        .brand-title {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .brand-title span {
+            color: var(--primary);
+        }
+
+        .brand-subtitle {
+            color: #687286;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .add-btn {
+            background: linear-gradient(135deg, #7625f5, #5b2be8);
+            border: 0;
+            border-radius: 15px;
+            color: white;
+            font-weight: 700;
+            padding: 13px 25px;
+            font-size: 17px;
+            box-shadow: 0 7px 18px rgba(114, 40, 245, 0.2);
+        }
+
+        .header-icon {
+            color: #687286;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .profile {
+            width: 52px;
+            height: 52px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+        }
+
+        /* ================= MAIN ================= */
+
+        .dashboard {
+            padding-top: 14px;
+            padding-bottom: 50px;
+        }
+
+        /* ================= STAT CARDS ================= */
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e9edf2;
+            border-radius: 18px;
+            min-height: 112px;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .06);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+        }
+
+        .stat-icon.blue {
+            background: linear-gradient(135deg, #397ffb, #2366ed);
+            box-shadow: 0 8px 18px rgba(42, 110, 240, .25);
+        }
+
+        .stat-icon.orange {
+            background: linear-gradient(135deg, #ffae0a, #ff7900);
+            box-shadow: 0 8px 18px rgba(255, 145, 0, .25);
+        }
+
+        .stat-icon.red {
+            background: linear-gradient(135deg, #ff1450, #e8003f);
+            box-shadow: 0 8px 18px rgba(239, 0, 60, .25);
+        }
+
+        .stat-label {
+            color: #717b8e;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        /* ================= CONTACTS ================= */
+
+        .section-title {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .section-subtitle {
+            color: #717b8e;
+            font-size: 18px;
+        }
+
+        .search-box {
+            height: 62px;
+            background: white;
+            border: 1px solid #dfe4eb;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .search-box i {
+            color: #9aa5b7;
+            font-size: 20px;
+            margin-right: 18px;
+        }
+
+        .search-box input {
+            border: 0;
+            outline: 0;
+            width: 100%;
+            font-size: 17px;
+            color: #333;
+        }
+
+        .search-box input::placeholder {
+            color: #9aa5b7;
+        }
+
+        /* ================= CONTACT CARD ================= */
+
+        .contact-card {
+            background: white;
+            border: 1px solid #e5e8ed;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .07);
+        }
+
+        .contact-body {
+            padding: 20px;
+        }
+
+        .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 15px;
+            background: #08b28a;
+            color: white;
+            font-size: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-name {
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        .contact-info {
+            color: #6f7b90;
+            margin-top: 13px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-icon {
+            width: 36px;
+            height: 32px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .phone-icon {
+            color: #397ffb;
+            background: #e4efff;
+        }
+
+        .mail-icon {
+            color: #7a35ee;
+            background: #eee7ff;
+        }
+
+        .location-icon {
+            color: #08a97d;
+            background: #dcfaef;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e3efff;
+            color: #1558d0;
+            border-radius: 7px;
+            padding: 6px 10px;
+            margin-top: 14px;
+            font-size: 14px;
+        }
+
+        .contact-footer {
+            border-top: 1px solid #edf0f4;
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+        }
+
+        .footer-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            width: 45px;
+            height: 45px;
+            border: 0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .action-phone {
+            color: #08a97d;
+            background: #e9fbf5;
+        }
+
+        .action-mail {
+            color: #7527ee;
+            background: #f0eaff;
+        }
+
+        .action-normal {
+            color: #8d98aa;
+            background: transparent;
+        }
+
+        /* ================= RIGHT SIDEBAR ================= */
+
+        .side-card {
+            background: white;
+            border: 1px solid #e6e9ed;
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 230px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .06);
+        }
+
+        .side-header {
+            min-height: 92px;
+            display: flex;
+            align-items: center;
+            padding: 20px 25px;
+            gap: 15px;
+        }
+
+        .favorite-header {
+            background: #fff9ef;
+        }
+
+        .emergency-header {
+            background: #fff1f3;
+        }
+
+        .side-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 11px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .side-icon.orange {
+            background: #ff9400;
+        }
+
+        .side-icon.red {
+            background: #f0003d;
+        }
+
+        .side-title {
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .side-subtitle {
+            color: #737e91;
+            font-size: 14px;
+        }
+
+        .empty-message {
+            min-height: 137px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ba5b5;
+            font-size: 17px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 991.98px) {
+
+            .navbar {
+                height: auto;
+                padding: 15px 0;
+            }
+
+            .brand-title {
+                font-size: 24px;
+            }
+
+            .brand-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .header-actions {
+                margin-top: 15px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .side-card {
+                margin-top: 25px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+
+            .brand-subtitle {
+                display: none;
+            }
+
+            .header-actions .add-btn {
+                font-size: 14px;
+                padding: 10px 13px;
+            }
+
+            .header-icon {
+                font-size: 17px;
+            }
+
+            .profile {
+                width: 42px;
+                height: 42px;
+            }
+
+            .stat-card {
+                min-height: 95px;
+                padding: 18px;
+            }
+
+            .stat-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .contact-body {
+                padding: 16px;
+            }
+        }
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   ADD CONTACT MODAL
+========================================= */
+
+.contact-modal {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+}
+
+
+/* HEADER */
+
+.contact-modal-header {
+    padding: 25px 30px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.contact-modal-header .modal-title {
+    color: #10213b;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.custom-close {
+    opacity: 1;
+    width: 20px;
+    height: 20px;
+    background-size: 18px;
+}
+
+
+/* BODY */
+
+.contact-modal-body {
+    padding: 32px 30px 15px;
+}
+
+
+/* PROFILE */
+
+.profile-upload {
+    margin-bottom: 40px;
+}
+
+.profile-placeholder {
+    width: 132px;
+    height: 132px;
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #4d91f7,
+        #2868ed
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 42px;
+
+    box-shadow: 0 8px 20px rgba(47, 115, 240, 0.15);
+}
+
+.change-photo-btn {
+    border: none;
+    background: #f2f3f6;
+    color: #172d4d;
+
+    padding: 12px 22px;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+
+    transition: 0.3s;
+}
+
+.change-photo-btn:hover {
+    background: #e8e9ed;
+}
+
+
+/* FORM GROUP */
+
+.form-group-custom {
+    margin-bottom: 28px;
+}
+
+.form-group-custom label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #172d4d;
+
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.form-group-custom label span {
+    color: #ff0060;
+}
+
+
+/* INPUTS */
+
+.custom-input {
+    min-height: 62px;
+
+    border: 1px solid #dce1e8;
+
+    border-radius: 15px;
+
+    background: #f9fafb;
+
+    padding: 0 22px;
+
+    font-size: 18px;
+
+    color: #1c2c45;
+}
+
+.custom-input::placeholder {
+    color: #7b8798;
+}
+
+.custom-input:focus {
+    background: #fff;
+
+    border-color: #7427f5;
+
+    box-shadow:
+        0 0 0 3px rgba(116, 39, 245, 0.1);
+}
+
+
+/* SELECT */
+
+select.custom-input {
+    cursor: pointer;
+}
+
+
+/* TEXTAREA */
+
+.notes-input {
+    height: 90px;
+
+    padding-top: 17px;
+
+    resize: none;
+}
+
+
+/* CHECKBOX OPTIONS */
+
+.contact-options {
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.custom-check {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.custom-check input {
+    appearance: none;
+
+    width: 26px;
+    height: 26px;
+
+    border: 1px solid #6d747d;
+
+    border-radius: 4px;
+
+    background: white;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.custom-check input:checked {
+    background: #7427f5;
+    border-color: #7427f5;
+}
+
+.custom-check input:checked::after {
+    content: "✓";
+
+    position: absolute;
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    left: 5px;
+    top: 0px;
+}
+
+.custom-check label {
+    margin: 0;
+
+    font-size: 19px;
+
+    color: #253b58;
+
+    cursor: pointer;
+}
+
+.custom-check:first-child label i {
+    color: #ffb000;
+}
+
+.custom-check:last-child label i {
+    color: #ff0060;
+}
+
+
+/* FOOTER */
+
+.contact-modal-footer {
+    border-top: none;
+
+    padding: 5px 30px 32px;
+
+    display: flex;
+
+    gap: 15px;
+}
+
+.cancel-btn,
+.save-btn {
+    height: 60px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    flex: 1;
+}
+
+.cancel-btn {
+    background: #f1f2f5;
+    color: #172d4d;
+}
+
+.cancel-btn:hover {
+    background: #e7e8ec;
+}
+
+.save-btn {
+    background: linear-gradient(
+        135deg,
+        #8122f7,
+        #5238ee
+    );
+
+    color: white;
+
+    box-shadow: 0 8px 18px rgba(106, 40, 245, 0.2);
+}
+
+.save-btn:hover {
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #7218e8,
+        #4630dd
+    );
+}
