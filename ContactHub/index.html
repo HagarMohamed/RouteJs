@@ -53,13 +53,12 @@
         <div class="header-actions d-flex align-items-center gap-4">
 
             <button
-    class="btn add-btn"
-    data-bs-toggle="modal"
-    data-bs-target="#addContactModal"
->
-    <i class="fa-solid fa-plus me-2"></i>
-    Add Contact
-</button>
+                class="btn add-btn"
+                data-bs-toggle="modal"
+                data-bs-target="#addContactModal">
+                <i class="fa-solid fa-plus me-2"></i>
+                Add Contact
+            </button>
 
             <i class="fa-solid fa-bell header-icon"></i>
 
@@ -183,128 +182,9 @@
 
                 <!-- CONTACT CARD -->
 
-                <div class="row">
+                <div class="row g-4" id="contacts">
 
-                    <div class="col-xl-7 col-lg-9 col-md-8">
-
-                        <div class="contact-card">
-
-                            <!-- BODY -->
-
-                            <div class="contact-body">
-
-                                <div class="d-flex gap-3">
-
-                                    <div class="avatar">
-                                        A
-                                    </div>
-
-                                    <div class="flex-grow-1">
-
-                                        <div class="contact-name">
-                                            aa
-                                        </div>
-
-                                        <!-- PHONE -->
-
-                                        <div class="contact-info">
-
-                                            <div class="info-icon phone-icon">
-                                                <i class="fa-solid fa-phone"></i>
-                                            </div>
-
-                                            <span>
-                                                01071234567
-                                            </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                <!-- EMAIL -->
-
-                                <div class="contact-info">
-
-                                    <div class="info-icon mail-icon">
-                                        <i class="fa-solid fa-envelope"></i>
-                                    </div>
-
-                                    <span>
-                                        h@gmail.com
-                                    </span>
-
-                                </div>
-
-
-                                <!-- LOCATION -->
-
-                                <div class="contact-info">
-
-                                    <div class="info-icon location-icon">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                    </div>
-
-                                    <span>
-                                        vbbgh
-                                    </span>
-
-                                </div>
-
-
-                                <!-- TAG -->
-
-                                <span class="tag">
-                                    Family
-                                </span>
-
-                            </div>
-
-
-                            <!-- FOOTER -->
-
-                            <div class="contact-footer">
-
-                                <div class="footer-actions">
-
-                                    <button class="action-btn action-phone">
-                                        <i class="fa-solid fa-phone"></i>
-                                    </button>
-
-                                    <button class="action-btn action-mail">
-                                        <i class="fa-solid fa-envelope"></i>
-                                    </button>
-
-                                </div>
-
-
-                                <div class="footer-actions">
-
-                                    <button class="action-btn action-normal">
-                                        <i class="fa-regular fa-star"></i>
-                                    </button>
-
-                                    <button class="action-btn action-normal">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </button>
-
-                                    <button class="action-btn action-normal">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </button>
-
-                                    <button class="action-btn action-normal">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                   
 
                 </div>
 
@@ -467,6 +347,9 @@
                             type="text"
                             class="form-control custom-input"
                             placeholder="Enter full name"
+                            name="name"
+                            id="name"
+                            required
                         >
 
                     </div>
@@ -485,6 +368,9 @@
                             type="tel"
                             class="form-control custom-input"
                             placeholder="e.g., 01012345678"
+                            name="phone"
+                            id="phone"
+                            required
                         >
 
                     </div>
@@ -502,6 +388,8 @@
                             type="email"
                             class="form-control custom-input"
                             placeholder="name@example.com"
+                            name="email"
+                            id="email"
                         >
 
                     </div>
@@ -519,6 +407,8 @@
                             type="text"
                             class="form-control custom-input"
                             placeholder="Enter address"
+                            name="address"
+                            id="address"
                         >
 
                     </div>
@@ -534,14 +424,14 @@
 
                         <select class="form-select custom-input">
 
-                            <option selected>
+                            <option id="group" selected>
                                 Select a group
                             </option>
 
-                            <option>Family</option>
-                            <option>Friends</option>
-                            <option>Work</option>
-                            <option>Other</option>
+                            <option value="family">Family</option>
+                            <option value="friends">Friends</option>
+                            <option value="work">Work</option>
+                            <option value="other">Other</option>
 
                         </select>
 
@@ -557,6 +447,8 @@
                         </label>
 
                         <textarea
+                            name="notes"
+                            id="notes"
                             class="form-control custom-input notes-input"
                             placeholder="Add notes about this contact"
                         ></textarea>
@@ -573,6 +465,7 @@
                             <input
                                 type="checkbox"
                                 id="favorite"
+                                
                             >
 
                             <label for="favorite">
@@ -619,6 +512,7 @@
                 <button
                     type="button"
                     class="save-btn"
+                    onclick="saveContact()"
                 >
                     <i class="fa-solid fa-check me-2"></i>
                     Save Contact
@@ -648,6 +542,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./js/script.js"></script>
 
 </body>
 </html>
