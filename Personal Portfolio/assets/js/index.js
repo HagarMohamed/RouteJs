@@ -39,3 +39,34 @@ window.addEventListener('scroll', () => {
 
 
 
+
+const toggleButton = document.getElementById("theme-toggle-button");
+
+
+function setTheme(isDark) {
+    if (isDark) {
+        document.documentElement.classList.add('dark');        
+        toggleButton.setAttribute('aria-pressed', 'true'); 
+        localStorage.setItem('theme', 'dark');                  
+    } else {
+        document.documentElement.classList.remove('dark');     
+        toggleButton.setAttribute('aria-pressed', 'false');
+        localStorage.setItem('theme', 'light');                 
+    }
+}
+
+
+const savedTheme = localStorage.getItem('theme');
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    setTheme(true);
+} else {
+    setTheme(false);
+}
+
+toggleButton.addEventListener('click', () => {
+    
+    const isCurrentDark = document.documentElement.classList.contains('dark');
+    setTheme(!isCurrentDark);
+});
