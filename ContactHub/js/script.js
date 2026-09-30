@@ -14,15 +14,6 @@
 
 
 
-
-
-
-
-let contactsList = [];
-
-
-function saveContact(){
-
     let fName = document.getElementById("name");
     let email = document.getElementById("email");
     let phone = document.getElementById("phone");
@@ -32,6 +23,17 @@ function saveContact(){
     let isFav = document.getElementById("favorite");
     let isEmergency = document.getElementById("emergency");
     let modal = document.getElementById("addContactModal");
+
+
+
+
+
+
+let contactsList = [];
+
+
+function saveContact(){
+
 
 
 // 1 if inputs with value
@@ -90,15 +92,27 @@ console.log(group);
 contactsList.push(contactUser);
 
 
-// display fun of contact
+// 4 display fun of contact
 displayContact();
-// close the modal
+// 5 close the modal
 
  const modalInstance =
             bootstrap.Modal.getOrCreateInstance(modal);
 
         modalInstance.hide();
 
+    
+
+
+//6 clear inputs
+fName.value = "";
+email.value = "";
+phone.value = "";
+address.value = "";
+group.value = "";
+notes.value = "";
+isFav.checked = false;
+isEmergency.checked = false;
 
 
 }
@@ -107,7 +121,31 @@ displayContact();
 function displayContact(){
 
      document.getElementById("contacts").innerHTML = "";
+
     for(let i = 0; i < contactsList.length; i++){
+
+       let favaouriteClassName ;
+
+       if(contactsList[i].isFav == true){
+
+        favaouriteClassName = "fa-solid";
+        
+           
+       }else{
+        favaouriteClassName = "fa-regular";
+       }
+
+       let emergencyClassName ;
+
+       if(contactsList[i].isEmergency == true){
+
+        emergencyClassName = "fa-solid";
+        
+           
+       }else{
+        emergencyClassName = "fa-regular";
+       }
+
        let contactCard = `
         <div  class="col-md-6">
        <div class="contact-card">
@@ -205,19 +243,20 @@ function displayContact(){
 
                                 <div class="footer-actions">
 
-                                    <button class="action-btn action-normal">
-                                        <i class="fa-regular fa-star"></i>
+                                    <button onclick="addToFav(${i})" class="action-btn action-normal">
+                                        <i class="${favaouriteClassName} fa-star"></i>
                                     </button>
 
-                                    <button class="action-btn action-normal">
-                                        <i class="fa-regular fa-heart"></i>
+                                    <button onclick="addToEmergency( ${i})" class="action-btn action-normal">
+                                        <i class="${emergencyClassName} fa-heart"></i>
                                     </button>
 
-                                    <button class="action-btn action-normal">
+                                    <button onclick="editContact(${i})" data-bs-toggle="modal"
+                                     data-bs-target="#addContactModal" class="action-btn action-normal">
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
 
-                                    <button class="action-btn action-normal">
+                                    <button onclick="deleteContact(${contactsList[i].phone}, ${i})" class="action-btn action-normal">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
 
@@ -236,29 +275,68 @@ function displayContact(){
 
 
 
-function deleteContact(){
+function deleteContact(phone, index){
+
+    contactsList.splice(index, 1);
+    displayContact();
+
+    // for(let i = 0; i < contactsList.length; i++){
+    //     if(contactsList[i].phone == phone){
+    //         contactsList.splice(i, 1);
+    //         displayContact();
+    //         break;
+    //     }
+    // }
+
+    // contactsList = contactsList.filter(contact => contact.phone != phone);
+    // displayContact();
+
+
+
 
 }   
 
 
-function addToFav(){
+function addToFav( index){
+
+    console.log("favourite");
+
+    contactsList[index].isFav = !contactsList[index].isFav;
+    displayContact();
 
 }   
 
-function removeFromFav(){
+ 
 
-}   
+function addToEmergency( index){ 
 
-function addToEmergency(){  
+    contactsList[index].isEmergency = !contactsList[index].isEmergency;
+    displayContact();
+
 
 }
 
-function removeFromEmergency(){
-
-}   
+  
 
 
-function editContact(){
+function editContact(index){
+
+   let contact = contactsList[index];
+
+   fName.value = contact.name;
+   phone.value = contact.phone;
+   email.value = contact.email;
+   address.value = contact.address;
+   group.value = contact.group;
+   notes.value = contact.notes;
+   isFav.checked = contact.isFav;
+   isEmergency.checked = contact.isEmergency;
+
+
+   
+
+
+
 
 }   
 
