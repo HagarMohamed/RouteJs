@@ -1,72 +1,67 @@
-// ^ Write your JavaScript code here
+// // ^ Write your JavaScript code here
 
 
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.text-slate-600');
+//Scroll behavior for the nav links
+
+function scrollBehavior (){
+
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    const sections = document.querySelectorAll("section");
+    sections[0].classList.add("active");
+     
+    
 
 
-window.addEventListener('scroll', () => {
-    let currentSectionId = "";
+    window.addEventListener( "scroll", () => {
 
-    sections.forEach(section => {
-        
-        const sectionTop = section.offsetTop;
-        
+    let sectionId;
+    let navLinksHref;
+    sections.forEach(section =>{
 
-        if (window.scrollY >= (sectionTop - 150)) {
-            currentSectionId = section.getAttribute('id');
+        if(window.scrollY >= section.offsetTop - 150){
+             sectionId  = section.id;
         }
-    });
+
+    })
+
+    console.log(sectionId);
+
+
+    navLinks.forEach(link =>{
+        navLinksHref = link.getAttribute("href");
+
+        if(navLinksHref === '#' + sectionId){
+             console.log(navLinksHref);
+
+            link.classList.add("active");
+
+
+        }else{
+            link.classList.remove("active");
+        }
+        
+
+    })
+   
 
     
-    navLinks.forEach(link => {
-        
-        link.classList.remove('active');
-        
-        if (link.getAttribute('href') === `#${currentSectionId}`) {
-            link.classList.add('active');
-        }
-    });
-});
+})
 
-
-
-
-
-
-
-
-
-
-
-
-const toggleButton = document.getElementById("theme-toggle-button");
-
-
-function setTheme(isDark) {
-    if (isDark) {
-        document.documentElement.classList.add('dark');        
-        toggleButton.setAttribute('aria-pressed', 'true'); 
-        localStorage.setItem('theme', 'dark');                  
-    } else {
-        document.documentElement.classList.remove('dark');     
-        toggleButton.setAttribute('aria-pressed', 'false');
-        localStorage.setItem('theme', 'light');                 
-    }
 }
 
+scrollBehavior();
 
-const savedTheme = localStorage.getItem('theme');
-const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-    setTheme(true);
-} else {
-    setTheme(false);
-}
-
-toggleButton.addEventListener('click', () => {
     
-    const isCurrentDark = document.documentElement.classList.contains('dark');
-    setTheme(!isCurrentDark);
-});
+
+
+
+
+
+
+
+
+
+
+
