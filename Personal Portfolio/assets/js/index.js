@@ -139,17 +139,30 @@ tabsFilter();
 
 
 
+// Handle Dark Mode
+
+
+
+function buttonToggle () {
+
+    let toggleBtn = document.querySelector("#theme-toggle-button")
+
+    console.log(toggleBtn);
+    toggleBtn.addEventListener ("click", (e) =>{
+        if(document.documentElement.classList.contains("dark")){
+            document.documentElement.classList.remove("dark");
+
+        }else{
+            document.documentElement.classList.add("dark");
+        }
+
+    })
+}
 
 
 
 
-
-
-
-
-
-
-
+buttonToggle();
 
 
 
