@@ -273,10 +273,14 @@ function handleGearSettings (){
 
     const gearIcon = document.querySelector("#settings-toggle");
     const settingsPanel = document.querySelector("#settings-sidebar");
+    const settingsPanelClose = document.querySelector("#close-settings");
+    const bodyElement = document.querySelector("body");
 
     let isOpen = false;
 
-    gearIcon.addEventListener("click", () =>{
+    gearIcon.addEventListener("click", (e) =>{
+
+        e.stopPropagation(); 
 
 
         if(!isOpen){
@@ -291,6 +295,29 @@ function handleGearSettings (){
 
         settingsPanel.classList.toggle("translate-x-full");
 
+
+    })
+
+    settingsPanelClose.addEventListener("click", (e) =>{
+        e.stopPropagation();
+        
+        settingsPanel.classList.toggle("translate-x-full");
+        gearIcon.style.right = '0';
+        isOpen = false;
+
+    })
+
+    settingsPanel.addEventListener("click", (event) => {
+        event.stopPropagation(); 
+    });
+
+
+    bodyElement.addEventListener("click", () =>{
+         if(isOpen){
+            settingsPanel.classList.toggle("translate-x-full");
+            gearIcon.style.right = '0';
+            isOpen = false;
+         }
 
     })
 
