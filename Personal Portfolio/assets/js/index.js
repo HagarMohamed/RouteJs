@@ -327,3 +327,77 @@ handleGearSettings();
 
 
 
+
+
+function handleFonts(){
+    const fontOptions = document.querySelectorAll(".font-option");
+
+    console.log(fontOptions);
+
+    
+
+    fontOptions.forEach(btn =>{
+        btn.addEventListener("click", () =>{
+
+            fontOptions.forEach(btn =>{
+                btn.classList.remove("active");
+            })
+
+            const font = btn.getAttribute("data-font");
+            btn.classList.add("active");
+
+             document.body.classList.remove("font-alexandria", "font-tajawal", "font-cairo");
+            
+        
+            document.body.classList.add(`font-${font}`);
+
+        })
+    })
+
+
+}
+
+
+
+handleFonts();
+
+
+
+function handleColors(){
+    const colorOptions = document.querySelectorAll(".color-btn");
+
+    console.log(colorOptions);  
+    
+    const themeMap = {
+        'purple': { primary: '#a855f7', secondary: '#ec4899' },
+        'blue':   { primary: '#3b82f6', secondary: '#06b6d4' },
+        'emerald':{ primary: '#10b981', secondary: '#14b8a6' },
+        'amber':  { primary: '#f59e0b', secondary: '#f97316' }
+    };
+    
+
+    colorOptions.forEach(btn =>{
+        btn.addEventListener("click", () =>{
+
+            colorOptions.forEach(btn =>{
+                btn.classList.remove('ring-2', 'ring-offset-2', 'ring-slate-400', 'dark:ring-white');
+            })
+
+            const color = btn.getAttribute("data-theme-target");
+            btn.classList.add('ring-2', 'ring-offset-2', 'ring-slate-400', 'dark:ring-white');
+
+            document.body.setAttribute("data-theme", color);
+
+             const theme = themeMap[color] || themeMap['purple'];
+
+             document.documentElement.style.setProperty('--color-primary', theme.primary);
+             document.documentElement.style.setProperty('--color-secondary', theme.secondary);
+    
+
+            
+        })
+    })  
+
+}
+
+handleColors();
