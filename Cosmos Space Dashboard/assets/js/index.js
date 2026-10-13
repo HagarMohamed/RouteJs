@@ -177,7 +177,7 @@ function formatUtcDateTime(isoString) {
 
 
 
-
+let AllPlanets = [];
 
 
 function showSection(sectionId) {
@@ -204,6 +204,13 @@ function showSection(sectionId) {
   });
 
 
+  if (sectionId === 'planets') {
+    fetchAllPlanets().then(planets => {
+      AllPlanets = planets;
+    });
+}
+    
+
 
 }
 
@@ -226,7 +233,7 @@ async function fetchAllPlanets() {
 
 async function showPlanetDetails(planetId) {
 
-        const planets = await fetchAllPlanets();
+        const planets = AllPlanets.length > 0 ? AllPlanets : await fetchAllPlanets();
         console.log(planets);
 
         const planet = planets.find(p => p.id === planetId);
