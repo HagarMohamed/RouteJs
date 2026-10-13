@@ -186,6 +186,7 @@
                   value="2024-03-14"
                   max=""
                   min="1995-06-16"
+                  onchange="fetchData(this.value)"
                 />
                 <span class="text-sm">Dec 17, 2025</span>
               </label>
@@ -199,6 +200,7 @@
               <button
                 id="today-apod-btn"
                 class="px-3 md:px-4 py-2 bg-slate-800 border border-slate-700 rounded-xl hover:bg-slate-700 transition-colors font-semibold text-sm"
+                onclick="fetchData(getUtcDate())"
               >
                 Today
               </button>

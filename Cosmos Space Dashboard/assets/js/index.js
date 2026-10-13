@@ -2,7 +2,7 @@
 
 const apiKey = "3sWtUmbdyh2tV7ubqf9CVfiLnmgxdEefbR2kJwFd";
 
-const nasaUrl = "https://api.nasa.gov/planetary/apod?api_key=" + apiKey + "&date=" + getUtcDate();
+const nasaUrl = "https://api.nasa.gov/planetary/apod?api_key=" + apiKey ;
 
 const launchUrl = "https://lldev.thespacedevs.com/2.3.0/launches/upcoming/?limit=10";
 
@@ -11,8 +11,9 @@ const allPlanetsUrl = "https://solar-system-opendata-proxy.vercel.app/api/planet
 
 
 
-async function fetchData() {
-    const response = await fetch(nasaUrl);
+async function fetchData(date) {
+    console.log("Fetching data for date:", date);
+    const response = await fetch(nasaUrl+"&date=" + date);
     const data = await response.json();
     console.log(data);
     formatToLongDate(data.date);
@@ -39,7 +40,7 @@ async function fetchData() {
 
     }
     
-fetchData();
+fetchData(getUtcDate());
 
 
 function getUtcDate(date = new Date()) {
