@@ -209,16 +209,25 @@ function showSection(sectionId) {
 
 
 
+async function fetchAllPlanets() {
+
+    const response = await fetch(allPlanetsUrl);
+    const data = await response.json();
+    const planets = data.bodies;
+    return planets;
+
+}
+
+
 
 
 
 
 
 async function showPlanetDetails(planetId) {
-  const response = await fetch(allPlanetsUrl);
-  const data = await response.json();
-  const planets = data.bodies;
-  console.log(planets);
+
+        const planets = await fetchAllPlanets();
+        console.log(planets);
 
         const planet = planets.find(p => p.id === planetId);
 
@@ -230,7 +239,7 @@ async function showPlanetDetails(planetId) {
         const planetRadius = document.getElementById("planet-radius");
         const planetMass = document.getElementById("planet-mass");
         const planetDensity = document.getElementById("planet-density");
-        const planetOrbitPeriod = document.getElementById("planet-orbit-period");
+        const planetOrbitPeriod = document.getElementById("planet-orbital-period");
         const planetRotation = document.getElementById("planet-rotation");
         const planetMoons = document.getElementById("planet-moons");
         const planetGravity = document.getElementById("planet-gravity");
@@ -263,9 +272,9 @@ async function showPlanetDetails(planetId) {
         planetRadius.textContent = planet.meanRadius;
         planetMass.textContent = planet.mass.massValue + " x 10^" + planet.mass.massExponent + "kg";
         planetDensity.textContent = planet.density;
-        planetOrbitPeriod.textContent = planet.sideralOrbit;
+        planetOrbitPeriod.textContent = planet.sideralOrbit + " days";
         planetRotation.textContent = planet.sideralRotation;
-        planetMoons.textContent = planet.moons;
+        planetMoons.textContent = planet.moons.length;
         planetGravity.textContent = planet.gravity;
 
 
