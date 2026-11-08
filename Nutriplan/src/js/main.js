@@ -161,7 +161,8 @@ const navLink = document.querySelectorAll('.nav-link');
 navLink.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const sectionLink = link.getAttribute('data-sectionId');
+      const sectionLink = link.getAttribute('data-sectionId');     
+    
       console.log(sectionLink);
       navigateToSection(sectionLink);
     });
@@ -182,15 +183,50 @@ function navigateToSection(sectionId) {
   const selectedSection = document.getElementById(sectionId);
   selectedSection.style.display = 'block';
 
+
+  const mainHeader = document.querySelector('#main-section-header h1');
+   const description = document.querySelector('#main-section-header p');
+
   if(sectionId === 'search-filters-section') {
     const mealCategoriesSection = document.getElementById('meal-categories-section');
     const allRecipesSection = document.getElementById('all-recipes-section');
     mealCategoriesSection.style.display = 'block';
     allRecipesSection.style.display = 'block';
+
+    
+    mainHeader.textContent = 'Meals & Recipes';
+    description.textContent = 'Discover delicious and nutritious recipes tailored for you';
   }
 
+
+  
+  else if(sectionId === 'products-section') {
+    mainHeader.textContent = 'Product Scanner';
+    description.textContent = 'Search packaged foods by name or barcode';  
+  }
+
+  else if(sectionId === 'foodlog-section') {
+    mainHeader.textContent = 'Food Log';
+    description.textContent = 'Track your daily nutrition and food intake';  
+  }
+
+
+
+  const navLink = document.querySelectorAll('.nav-link');
+    navLink.forEach(link => {
+        link.classList.remove('bg-emerald-50', 'text-emerald-700','hover:bg-gray-50');
+        if(link.getAttribute('data-sectionId') === sectionId) {
+            link.classList.add('bg-emerald-50', 'text-emerald-700');
+        }else{
+            link.classList.add('text-gray-600', 'hover:bg-gray-50');
+        }
+        
+    })
+
+  
   
 
  
   }
+
   
