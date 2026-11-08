@@ -111,12 +111,17 @@ getCuisine();
 
 const allmealsApi = "https://nutriplan-api.vercel.app/api/meals/search?q=chicken";
 
+
+
+
 async function getAllMeals() {
+    showLoadingOverlay(true);
     const response = await fetch(allmealsApi);
     const data = await response.json();
     const meals = data.results;
     console.log(meals);
     bindMeals(meals);
+    showLoadingOverlay(false);
 
 }
 
@@ -125,7 +130,20 @@ getAllMeals();
 function bindMeals(meals){
     const mealsGrid = document.getElementById('recipes-grid');
     mealsGrid.innerHTML = '';
-    
+
+    if (meals.length === 0) {
+        mealsGrid.innerHTML = `
+        <div class="flex flex-col items-center justify-center py-12 text-center">
+    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+        <i class="fa-solid fa-search text-gray-400 text-2xl"></i>
+    </div>
+    <p class="text-gray-500 text-lg">No recipes found</p>
+    <p class="text-gray-400 text-sm mt-2">Try searching for something else</p>
+</div>
+        `;
+        return;
+    }   
+
      meals.forEach(meal => {
         const mealCard = document.createElement('div');
         mealCard.classList.add('recipe-card', 'bg-white', 'rounded-xl', 'overflow-hidden', 'shadow-sm', 'hover:shadow-lg', 'transition-all', 'cursor-pointer', 'group');
@@ -409,13 +427,23 @@ const productGrid = document.getElementById('products-grid');
 productSearchBtn.addEventListener('click', async () => {
 
   productGrid.innerHTML = ''; 
+  showLoadingOverlay(true);
   const query = productSearchInput.value;
   const response = await fetch(`${productSearchApi}?q=${query}`);
   const data = await response.json();
   const products = data.results;
   console.log(products);
+  showLoadingOverlay(false);
 
-  products.forEach(product => {
+  displayProducts(products);
+
+}); 
+
+
+function displayProducts(products) {
+    const productGrid = document.getElementById('products-grid');
+    productGrid.innerHTML = ''; 
+    products.forEach(product => {
     const productCard = document.createElement('div');
     productCard.classList.add('product-card', 'bg-white', 'rounded-xl', 'overflow-hidden', 'shadow-sm', 'hover:shadow-lg', 'transition-all', 'cursor-pointer', 'group');
     productCard.setAttribute('data-barcode', product.barcode);
@@ -453,11 +481,7 @@ productSearchBtn.addEventListener('click', async () => {
     `;
     productGrid.appendChild(productCard);
   });
-
-}); 
-
-
-
+}
 
 
 
@@ -466,19 +490,92 @@ productSearchBtn.addEventListener('click', async () => {
 
 const barcodeApi = "https://nutriplan-api.vercel.app/api/products/barcode/";
 
+const barcodeInput = document.getElementById('barcode-input');
+const lookupBarcodeBtn = document.getElementById('lookup-barcode-btn');
+
+lookupBarcodeBtn.addEventListener('click', () => {
+  const barcode = barcodeInput.value;
+  scanBarcode(barcode);
+});
+
 function scanBarcode(barcode) {
+    showLoadingOverlay(true);
   fetch(`${barcodeApi}${barcode}`)
     .then(response => response.json())
     .then(data => {
       const product = data.result;
       console.log(product);
       displayProductDetails(product);
+      displayProducts([product]);
     })
-    .catch(error => console.error('Error fetching product by barcode:', error));
+    .catch(error => console.error('Error fetching product by barcode:', error))
+    .finally(() => showLoadingOverlay(false));
 }   
 
 
 
 function displayProductDetails(product) {
-    
+    // Example: Show a recipe detail popup modal
+    // "nutrients": {
+    //   "calories": 163,
+    //   "fat": 8,
+    //   "carbs": 9.5,
+    //   "protein": 14.3,
+    //   "sugar": 0,
+    //   "fiber": 1.43266475644699,
+    //   "sodium": 0.163323782234957
+    // }
+Swal.fire({
+  title: `${product.name}`,
+  text: `Calories: ${product.nutrients.calories} kcal, Fat: ${product.nutrients.fat} g, Carbs: ${product.nutrients.carbs} g, Protein: ${product.nutrients.protein} g`,
+  imageUrl: `${product.image}`,
+  imageWidth: 200,
+  imageHeight: 200,
+  confirmButtonText: 'Add to Food Log',
+  showCancelButton: true,
+  cancelButtonText: 'Cancel',
+  showLoaderOnConfirm: true,
+  preConfirm: () => {
+    addToFoodLog(product);
+  }
+});
+
+
 }
+
+
+
+function addToFoodLog(product) {
+    
+    console.log(`Adding ${product.name} to food log...`);
+}
+
+
+
+// Loading Function
+
+function showLoadingOverlay(loading) {
+
+    const loadingOverlay = document.getElementById('app-loading-overlay');
+    const mealsGrid = document.getElementById('recipes-grid');
+
+    if (!loadingOverlay) {
+        console.error('app-loading-overlay not found in DOM!');
+        return;
+    }
+
+    if (loading) {
+         mealsGrid.innerHTML = ``;
+        loadingOverlay.classList.remove('hidden');
+        mealsGrid.innerHTML = `
+    <div class="flex items-center justify-center py-12">
+    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+    </div>
+    `;
+    } else {
+        loadingOverlay.classList.add('hidden');
+    }
+
+    
+    
+}  
