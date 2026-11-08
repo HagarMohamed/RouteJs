@@ -10,6 +10,7 @@
 
 const categoryApi = "https://nutriplan-api.vercel.app/api/meals/categories";
 
+let seltedCategory = '';
 
 async function getCategories() {
   const response = await fetch(categoryApi);
@@ -24,7 +25,8 @@ async function getCategories() {
     categoryCard.classList.add('category-card');
 
     categoryCard.addEventListener('click', () => {
-        filterMealsByCategory(category.name);
+        seltedCategory = category.name;
+        filterMealsByCategory(seltedCategory, selectedCuisine);
 
        
     });
@@ -59,21 +61,42 @@ getCategories();
 
 const allcuisineApi = "https://nutriplan-api.vercel.app/api/meals/areas ";
 
+let selectedCuisine = '';
 
 
 async function getCuisine() {
   const response = await fetch(allcuisineApi);
   const data = await response.json();
-  const cuisine = data.results;
-  console.log(cuisine);
+  const cuisines = data.results;
+  console.log(cuisines);
 
-    cuisine.forEach(cuisine => {
+    cuisines.forEach(cuisine => {
        const cuisineGrid = document.getElementById('all-cuisines');
 
         const cuisineButton = document.createElement('button');
-        cuisineButton.classList.add('px-4', 'py-2', 'bg-gray-100', 'text-gray-700', 'rounded-full', 'font-medium', 'text-sm', 'whitespace-nowrap', 'hover:bg-gray-200', 'transition-all');
+        cuisineButton.classList.add('px-4', 'py-2', 'bg-gray-100', 'text-gray-700', 'rounded-full', 'font-medium', 'text-sm', 'whitespace-nowrap', 'hover:bg-gray-200', 'transition-all', 'btn-cuisine');
         cuisineButton.textContent = cuisine.name;
         cuisineGrid.appendChild(cuisineButton);
+
+
+        cuisineButton.addEventListener('click', () => {
+            selectedCuisine = cuisine.name;
+            filterMealsByCategory(seltedCategory, selectedCuisine);
+
+            document.querySelectorAll('.btn-cuisine').forEach(btn => {
+
+                btn.classList.remove('bg-emerald-600', 'text-white','hover:bg-gray-200','bg-gray-100', 'text-gray-700');
+
+                if (btn.innerText === selectedCuisine) {
+            
+                    btn.classList.add('bg-emerald-600', 'text-white');
+                }else {
+                    btn.classList.add('bg-gray-100', 'text-gray-700',  'hover:bg-gray-200');
+                }
+        });
+
+
+        });
     });
       
 }
@@ -358,8 +381,8 @@ searchInput.addEventListener('input', async () => {
 const filterApi = "https://nutriplan-api.vercel.app/api/meals/filter?limit=25"
 
 
-function filterMealsByCategory(category) {
-  fetch(`${filterApi}&category=${category}`)
+function filterMealsByCategory(category, area) {
+  fetch(`${filterApi}&category=${category}&area=${area}`)
     .then(response => response.json())
     .then(data => {
       const meals = data.results;
