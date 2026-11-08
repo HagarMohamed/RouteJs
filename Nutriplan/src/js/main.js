@@ -22,6 +22,12 @@ async function getCategories() {
     const categoryGrid = document.getElementById('categories-grid');
     const categoryCard = document.createElement('div');
     categoryCard.classList.add('category-card');
+
+    categoryCard.addEventListener('click', () => {
+        filterMealsByCategory(category.name);
+
+       
+    });
     categoryCard.innerHTML = `<div
               class="category-card bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-3 border border-emerald-200 hover:border-emerald-400 hover:shadow-md cursor-pointer transition-all group"
               data-category="Beef"
@@ -87,9 +93,17 @@ async function getAllMeals() {
     const data = await response.json();
     const meals = data.results;
     console.log(meals);
+    bindMeals(meals);
 
-    meals.forEach(meal => {
-        const mealsGrid = document.getElementById('recipes-grid');
+}
+
+getAllMeals();
+
+function bindMeals(meals){
+    const mealsGrid = document.getElementById('recipes-grid');
+    mealsGrid.innerHTML = '';
+    
+     meals.forEach(meal => {
         const mealCard = document.createElement('div');
         mealCard.classList.add('recipe-card', 'bg-white', 'rounded-xl', 'overflow-hidden', 'shadow-sm', 'hover:shadow-lg', 'transition-all', 'cursor-pointer', 'group');
         mealCard.setAttribute('data-meal-id', meal.idMeal);
@@ -150,10 +164,6 @@ async function getAllMeals() {
         mealsGrid.appendChild(mealCard);
     });
 }
-
-getAllMeals();
-
-
 
 
 
@@ -318,3 +328,43 @@ function navigateToSection(sectionId) {
 
   }
   
+
+
+
+
+// Search Function for recipes
+
+const searchInput = document.getElementById('search-input');
+
+
+
+searchInput.addEventListener('input', async () => {
+  const query = searchInput.value;
+  const response = await fetch(`https://nutriplan-api.vercel.app/api/meals/search?q=${query}`);
+  const data = await response.json();
+  const recipes = data.results;
+  console.log(recipes);
+
+  bindMeals(recipes);
+
+
+  
+}); 
+
+
+
+// Filter Function for recipes
+
+const filterApi = "https://nutriplan-api.vercel.app/api/meals/filter?limit=25"
+
+
+function filterMealsByCategory(category) {
+  fetch(`${filterApi}&category=${category}`)
+    .then(response => response.json())
+    .then(data => {
+      const meals = data.results;
+      console.log(meals);
+      bindMeals(meals);
+    })
+    .catch(error => console.error('Error fetching meals by category:', error));
+}

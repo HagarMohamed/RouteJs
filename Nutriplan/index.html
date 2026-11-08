@@ -180,6 +180,7 @@
                 type="text"
                 placeholder="Search recipes by name, ingredient, or cuisine..."
                 class="w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all text-sm"
+                onkeypress="if(event.keyCode==13){document.getElementById('search-btn').click();}"
               />
             </div>
           </div>
@@ -219,7 +220,7 @@
 
           <div id="categories-grid" class="grid grid-cols-6 gap-3">
             <!-- Categories will be loaded here by JavaScript -->
-            <div
+            <!-- <div
               class="category-card bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-3 border border-emerald-200 hover:border-emerald-400 hover:shadow-md cursor-pointer transition-all group"
               data-category="Beef"
             >
@@ -233,7 +234,7 @@
                   <h3 class="text-sm font-bold text-gray-900">Beef</h3>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
@@ -667,6 +668,7 @@
                   id="product-search-input"
                   placeholder="Search by product name (e.g., Cheerios, Nutella, Coca-Cola...)"
                   class="w-full px-5 py-3.5 pr-12 bg-white/90 backdrop-blur-sm text-gray-900 rounded-xl placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50"
+                  onkeypress="if(event.keyCode==13){document.getElementById('search-product-btn').click();}"
                 />
                 <i
                   class="fa-solid fa-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
