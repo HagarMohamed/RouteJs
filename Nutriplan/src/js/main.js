@@ -145,3 +145,52 @@ async function getAllMeals() {
 }
 
 getAllMeals();
+
+
+
+
+
+
+
+
+// Navigation Function
+
+navigateToSection('search-filters-section');
+
+const navLink = document.querySelectorAll('.nav-link');
+navLink.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const sectionLink = link.getAttribute('data-sectionId');
+      console.log(sectionLink);
+      navigateToSection(sectionLink);
+    });
+  });
+
+
+
+
+
+function navigateToSection(sectionId) {
+    const sections = document.querySelectorAll('section');
+    console.log(sections);
+    sections.forEach(section => {
+      section.style.display = 'none';
+    });
+  //search-filters-section, meal-categories-section,all-recipes-section
+
+  const selectedSection = document.getElementById(sectionId);
+  selectedSection.style.display = 'block';
+
+  if(sectionId === 'search-filters-section') {
+    const mealCategoriesSection = document.getElementById('meal-categories-section');
+    const allRecipesSection = document.getElementById('all-recipes-section');
+    mealCategoriesSection.style.display = 'block';
+    allRecipesSection.style.display = 'block';
+  }
+
+  
+
+ 
+  }
+  
