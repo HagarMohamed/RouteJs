@@ -93,6 +93,13 @@ async function getAllMeals() {
         const mealCard = document.createElement('div');
         mealCard.classList.add('recipe-card', 'bg-white', 'rounded-xl', 'overflow-hidden', 'shadow-sm', 'hover:shadow-lg', 'transition-all', 'cursor-pointer', 'group');
         mealCard.setAttribute('data-meal-id', meal.idMeal);
+
+        mealCard.addEventListener('click', () => {
+            getMealDetails(meal.id);
+            navigateToSection('meal-details');
+            console.log(`Meal ID: ${meal.id}`);
+        });
+
         mealCard.innerHTML = `
          <div
               class="recipe-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer group"
@@ -229,4 +236,85 @@ function navigateToSection(sectionId) {
  
   }
 
+  
+
+
+  //Get Details of a Meal
+
+  const mealDetailsApi = "https://nutriplan-api.vercel.app/api/meals";
+
+  async function getMealDetails(mealId) {
+    
+
+    const response = await fetch(`${mealDetailsApi}/${mealId}`);
+    const data = await response.json();
+    const meal = data.result;
+    console.log(meal);
+
+    const heroImage = document.getElementById('hero-image');
+    heroImage.src = meal.thumbnail;
+    heroImage.alt = meal.name;  
+
+
+    const heroTags = document.getElementById('hero-tags');
+    meal.tags.forEach(tag => {
+        const tagSpan = document.createElement('span');
+        tagSpan.classList.add('px-3', 'py-1', 'bg-emerald-500', 'text-white', 'text-sm', 'font-semibold', 'rounded-full');
+        tagSpan.textContent = tag;
+        heroTags.appendChild(tagSpan);
+    });
+
+    const heroTitle = document.getElementById('hero-title');
+    heroTitle.textContent = meal.name;
+
+
+
+    const heroIngridients = document.getElementById('ingredients');
+    meal.ingredients.forEach(ingredient => {
+        const ingredientDiv = document.createElement('div');
+        ingredientDiv.classList.add('flex', 'items-center', 'gap-2', 'mb-2');
+        ingredientDiv.innerHTML = `
+                    <input
+                      type="checkbox"
+                      class="ingredient-checkbox w-5 h-5 text-emerald-600 rounded border-gray-300"
+                    />
+                    <span class="text-gray-700">
+                      <span class="font-medium text-gray-900">${ingredient.measure}</span>
+                      ${ingredient.ingredient}
+                    </span>
+                
+        `;
+        heroIngridients.appendChild(ingredientDiv);
+        
+    });
+
+
+    const heroInstructions = document.getElementById('instructions');
+    meal.instructions.forEach(instruction => {
+        const instructionDiv = document.createElement('div');
+        instructionDiv.classList.add('flex', 'gap-2', 'mb-4');
+        instructionDiv.innerHTML = `
+          <div
+                    class="flex gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors"
+                  >
+                    <div
+                      class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0"
+                    >
+                     ${meal.instructions.indexOf(instruction) + 1}
+                    </div>
+                    <p class="text-gray-700 leading-relaxed pt-2">
+                     ${instruction}
+                    </p>
+                  </div>
+            
+        `;
+        heroInstructions.appendChild(instructionDiv);
+    });
+
+
+    const heroVideo = document.getElementById('video-tutorial-iframe');
+    heroVideo.src = meal.youtube;
+    
+
+  }
   
