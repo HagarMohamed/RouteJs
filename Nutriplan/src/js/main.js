@@ -391,3 +391,94 @@ function filterMealsByCategory(category, area) {
     })
     .catch(error => console.error('Error fetching meals by category:', error));
 }
+
+
+
+
+
+
+
+// Product Search Function
+
+const productSearchApi = "https://nutriplan-api.vercel.app/api/products/search";
+
+const productSearchInput = document.getElementById('product-search-input');
+const productSearchBtn = document.getElementById('search-product-btn');
+const productGrid = document.getElementById('products-grid');
+
+productSearchBtn.addEventListener('click', async () => {
+
+  productGrid.innerHTML = ''; 
+  const query = productSearchInput.value;
+  const response = await fetch(`${productSearchApi}?q=${query}`);
+  const data = await response.json();
+  const products = data.results;
+  console.log(products);
+
+  products.forEach(product => {
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card', 'bg-white', 'rounded-xl', 'overflow-hidden', 'shadow-sm', 'hover:shadow-lg', 'transition-all', 'cursor-pointer', 'group');
+    productCard.setAttribute('data-barcode', product.barcode);
+    productCard.innerHTML = `
+      <div
+        class="relative h-40 bg-gray-100 flex items-center justify-center overflow-hidden"
+      >
+        <img
+          class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+          src="${product.image}"
+          alt="Product Name"
+          loading="lazy"
+        />
+
+        <!-- Nutri-Score Badge -->
+        <div
+          class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded uppercase"
+        >
+          Nutri-Score A
+        </div>  
+
+        <!-- NOVA Badge -->  
+        <div
+          class="absolute top-2 right-2 bg-lime-500 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center"
+          title="NOVA 2"        
+        >
+          2
+        </div>        
+      </div>
+
+      <div class="p-4">
+        <h2 class="text-lg font-bold mb-2">${product.name}</h2>
+        <p class="text-gray-700">${product.description}</p>
+      </div>      
+    `;
+    productGrid.appendChild(productCard);
+  });
+
+}); 
+
+
+
+
+
+
+// Barcode Scanner Function
+
+
+const barcodeApi = "https://nutriplan-api.vercel.app/api/products/barcode/";
+
+function scanBarcode(barcode) {
+  fetch(`${barcodeApi}${barcode}`)
+    .then(response => response.json())
+    .then(data => {
+      const product = data.result;
+      console.log(product);
+      displayProductDetails(product);
+    })
+    .catch(error => console.error('Error fetching product by barcode:', error));
+}   
+
+
+
+function displayProductDetails(product) {
+    
+}
